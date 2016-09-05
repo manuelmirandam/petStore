@@ -5,9 +5,9 @@
         .module('petStore.controllers')
         .controller('ShoppingCartController', ShoppingCartController);
     
-    ShoppingCartController.$inject = ['ShoppingCartService', 'ProductService', '$location', '$anchorScroll', '$route'];
+    ShoppingCartController.$inject = ['ShoppingCartService', 'ProductService', '$location', '$anchorScroll', '$route', '$cacheFactory'];
     
-    function ShoppingCartController(ShoppingCartService, ProductService, $location, $anchorScroll, $route) {
+    function ShoppingCartController(ShoppingCartService, ProductService, $location, $anchorScroll, $route, $cacheFactory) {
         var vm = this;
         
         vm.shoppingCartList = [];
@@ -29,23 +29,39 @@
          * Get all shopping cart items and loop the array to pull the product data
          */
         function getShoppingCartItems() {
-            ShoppingCartService.getAll().$loaded()
-                .then(function (shopingCartItems) {
-                    angular.forEach(shopingCartItems, function (item) {
-                        ProductService.getById(item.$id).$loaded()
-                            .then(function (x) {
-                                x.quantity = item.quantity;
-                                x.subtotal = item.quantity * x.unitPrice;
-                                vm.shoppingCartList.push(x);
-                                updateShoppingCartSummary();
-                            });
+            var dataCache = $cacheFactory.get('shoppingCartCache');
+            // Let's validate if the cache object exists, if not, we create the cache object.
+            if (!dataCache) {
+                dataCache = $cacheFactory('shoppingCartCache');
+            }
+            
+            var shoppingCartItemsFromCache = dataCache.get('shoppingCartItems');
+            if (shoppingCartItemsFromCache) {
+                vm.shoppingCartList = shoppingCartItemsFromCache;
+            } else {
+                var shoppingCartList = [];
+                ShoppingCartService.getAll().$loaded()
+                    .then(function (shopingCartItems) {
+                        angular.forEach(shopingCartItems, function (item) {
+                            ProductService.getById(item.$id).$loaded()
+                                .then(function (x) {
+                                    x.quantity = item.quantity;
+                                    x.subtotal = item.quantity * x.unitPrice;
+                                    shoppingCartList.push(x);
+                                    updateShoppingCartSummary();
+                                });
+                        });
+                        
+                        dataCache.put('shoppingCartItems', shoppingCartList);
+                        vm.shoppingCartList = shoppingCartList;
                     });
-                });
+            }
         }
                         
         function deleteProductFromCart(product, index) {
             ShoppingCartService.deleteById(product)
                 .then(function () {
+                    ShoppingCartService.deleteItemsFromCache();
                     $route.reload();
                 });
         }

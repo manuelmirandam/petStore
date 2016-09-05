@@ -20,6 +20,7 @@
         function addToCart() {
             vm.product.quantity = vm.quantity;
             ShoppingCartService.addToCart(vm.product);
+            ShoppingCartService.deleteItemsFromCache();
             $location.path('/shoppingCart');
         }
         

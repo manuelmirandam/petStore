@@ -5,14 +5,15 @@
         .module('petStore.services')
         .factory('ShoppingCartService', ShoppingCartService);
         
-    ShoppingCartService.$inject = ['$firebaseArray', '$firebaseObject', 'firebaseUrl'];
+    ShoppingCartService.$inject = ['$firebaseArray', '$firebaseObject', 'firebaseUrl', '$cacheFactory'];
     
-    function ShoppingCartService($firebaseArray, $firebaseObject, firebaseUrl) {
+    function ShoppingCartService($firebaseArray, $firebaseObject, firebaseUrl, $cacheFactory) {
         var shoppingRef = new Firebase(firebaseUrl + 'shoppingCart');
         var shoppingCartService = {
             addToCart: addToCart,
             getAll: getAll,
-            deleteById: deleteById
+            deleteById: deleteById,
+            deleteItemsFromCache: deleteItemsFromCache
         };
             
         return shoppingCartService;
@@ -38,6 +39,14 @@
          */
         function deleteById(product) {
             return $firebaseObject(shoppingRef.child(product.$id)).$remove();
+        }
+        
+        /*
+         * Method to delete shopping cart items from cache once shopping cart has been updated
+         */
+        function deleteItemsFromCache() {
+            var dataCache = $cacheFactory.get('shoppingCartCache');
+            dataCache.remove('shoppingCartItems');
         }
     }
 }());
