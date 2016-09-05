@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="col-md-12">
+        <h3>Product Management Panel</h3>         
+        <hr>
+    </div>                        
+</div>
+<div class="container">                                                  
+    <div class="row">
+        <div class="col-sm-12 col-md-6">                                                                     
+            <form name="vm.productForm" novalidate ng-submit="vm.saveProduct(vm.product)">
+                <label for="name">Name</label>                
+                <div class="txt-error" ng-show="vm.productForm.$submitted && vm.productForm.name.$error.required">This field is required</div>
+                <input type="text" class="form-control" name="name" ng-model="vm.product.name" ng-required="true">                                
+
+                <label for="shortDescription">Short description</label>
+                <div class="txt-error" ng-show="vm.productForm.$submitted && vm.productForm.shortDescription.$error.required">This field is required</div>
+                <input type="text" class="form-control" name="shortDescription" ng-model="vm.product.shortDescription" ng-required="true">
+
+                <label for="largeDescription">Large description</label>
+                <div class="txt-error" ng-show="vm.productForm.$submitted && vm.productForm.largeDescription.$error.required">This field is required</div>
+                <textarea class="form-control" name="largeDescription" ng-model="vm.product.largeDescription" ng-required="true"></textarea>
+
+                <label for="unitPrice">Unit price</label>
+                <div class="txt-error" ng-show="vm.productForm.$submitted && vm.productForm.unitPrice.$error.required">This field is required</div>
+                <input type="number" class="form-control" name="unitPrice" min="0" ng-model="vm.product.unitPrice" ng-required="true">
+
+                <label for="stock">Stock</label>
+                <div class="txt-error" ng-show="vm.productForm.$submitted && vm.productForm.stock.$error.required">This field is required</div>
+                <input type="number" class="form-control" name="stock" min="0" ng-model="vm.product.stock" ng-required="true">
+                
+                <label for="category">Category</label>
+                <div class="txt-error" ng-show="vm.productForm.$submitted && vm.productForm.productCategory.$error.required">This field is required</div>
+                <select class="form-control" name="productCategory" ng-options="category.categoryId as category.name for category in $parent.vm.categories" ng-model="vm.product.categoryId" ng-required="true">
+                    <option value="">-- Select --</option>
+                </select>
+                
+                <label for="stock">Animal</label>
+                <div class="txt-error" ng-show="vm.productForm.$submitted && vm.productForm.animal.$error.required">This field is required</div>
+                <select class="form-control" name="animal" ng-options="animal.animalId as animal.name for animal in $parent.vm.animals" ng-model="vm.product.animalId" ng-required="true">
+                    <option value="">-- Select --</option>
+                </select>                
+
+                <label for="imgPath">Image</label>
+                <div class="txt-error" ng-show="vm.productForm.$submitted && vm.productForm.imgPath.$error.required">This field is required</div>
+                <div class="input-group">                                                            
+                    <label class="input-group-btn">
+                        <span class="btn btn-warning">
+                            Browse… <input type="file" style="display: none;" multiple="" custom-on-change="vm.uploadFile">
+                        </span>
+                    </label>                    
+                    <input type="text" class="form-control" readonly="" ng-model="vm.product.imgPath" name="imgPath" ng-required="true">
+                </div>                                
+                
+                <button type="submit" class="btn btn-warning pull-right" style="margin:10px 0 0 5px;">Submit</button>
+                <button type="button" class="btn btn-warning pull-right" style="margin:10px 0 0 5px;" ng-hide="vm.product.$id != undefined && vm.product.$id != ''" ng-click="vm.reset()">Reset</button>
+                <a href="#/adminProduct" type="reset" class="btn btn-warning pull-right" style="margin-top:10px;">Back</a>
+            </form>
+        </div>      
+        <div class=" col-sm-12 col-md-6">                                
+            <img class="img-rounded" ng-src="/assets/img/products/{{ vm.product.imgPath }}" style="width: 279px; height:279px;">
+        </div>
+    </div>                                                                                               
+</div>  

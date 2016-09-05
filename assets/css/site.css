@@ -1,0 +1,303 @@
+/* 
+ * Main styles for PetStore!
+ * By: mmiranda
+ * Last modify: August, 2016
+ *
+ */
+
+/* GENERAL STYLES */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+@font-face {    
+    font-family: Gudea;    
+    src: url(../fonts/Gudea-Regular.ttf);    
+}
+
+body {
+    background-color:#FFF;    
+    color:#777;
+    font: 14px/24px 'Gudea', sans-serif;    
+    margin-bottom: 450px;
+}
+
+.panel, .form-control, .btn {
+    border-radius: 0;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+/* NAVBAR */
+.navbar-default {
+    background-color: #7bae23;
+    border-color: #7bae23;
+}
+
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: #7bae23;
+}
+
+.navbar-default .navbar-toggle {
+    background-color: #c72929;
+    border-color: #c72929;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color:#FFF;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: #c72929;
+    border-color: #c72929;
+}
+
+/* SIDEBAR */
+.generic-header {
+    font-weight: bold;
+    font:700 20px/1 Gudea,Arial,sans-serif;    
+    background-color: #f4f4f4 !important;
+    border-radius: 0;
+}
+
+.category-body {
+    padding-left:0px;
+}
+
+.category-body > li {
+    list-style-type: none;
+    padding: 0;
+    margin:0 0 5px 10px;    
+    font-size:16px;
+}
+
+.category-body > li > a {
+    color:#888;
+}
+
+.category-body > li > a:hover {
+    color:#7bae23;
+}
+
+/* FOOTER */
+.footer {    
+    background-color: #444645;
+    margin-top:100px;
+    padding-top:10px;        
+    position: absolute;
+    bottom: 0;        
+    width: 100%;
+    border-top: 100px solid #7bae23;
+}
+
+/* BUTTONS */
+.btn-warning, .btn-warning:active, .btn-warning.active, .btn-warning.disabled, .btn-warning[disabled] {
+    background-color: #575a59;
+    border-color: #5c5f5e;
+}
+
+.btn-warning:hover, .btn-warning:focus {
+    background-color: #6B6E6D;
+    border-color: #6B6E6D;
+}
+
+.btn-warning:hover, .btn-warning:hover {
+    background-color: #7bae23;
+    border-color: #7bae23;
+}
+
+.btn-danger, .btn-danger:active, .btn-danger.active, .btn-danger.disabled, .btn-danger[disabled] {
+    background-color: #c72929;
+    border-color: #c72929;    
+}
+
+.btn-danger:hover, .btn-danger:focus {
+    background-color: #c72929;
+    border-color: #C94545;
+}
+
+.btn-danger:hover, .btn-danger:hover {
+    background-color: #C94545;
+    border-color: #c72929;
+}
+
+.btn-load-more-container {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.shopping-cart > a {    
+    position:relative;
+    float:right;
+    color:#FFF;
+}
+
+.shopping-cart > a:hover {    
+    text-decoration: underline;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 767px) {
+    body {
+        margin-bottom: 1000px;
+    }
+    .shopping-cart > a {    
+        position:relative;
+        float:left;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .navbar {
+        border-radius: 0px;
+    }
+}
+
+/* PRODUCT DETAIL */
+.custom-qty-input {
+    display: block;    
+    width: 140px;
+    height: 52px;
+    border: 1px solid #e0e0e0;    
+    float:left;
+    margin-bottom: 10px;
+}
+
+.custom-qty-input input {
+    height: 100%;
+    width: 100%;
+    border: none;
+    text-align: center;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 21px;
+    color: #757575;
+}
+
+.btn-add-to-cart {    
+    height: 52px;    
+    position:relative;
+    left:10px;
+    margin-bottom:10px;    
+}   
+
+.product-price-container {
+    max-width:130px;
+    padding:10px;;
+    margin-bottom: 20px;
+    background-color: #c72929;        
+    border-radius: 50%;
+    text-align: center;    
+}
+
+.product-price {                
+    font-size: 20px;
+    font-weight: bold;
+    color: #FFF;
+    position: relative;    
+    top:50%;    
+}
+
+/* SHOPPING CART */
+.shopping-table {
+    text-align: center;        
+}
+
+.shopping-table tr th {
+    text-align: center;
+    background-color: #fafafa;
+    font-size: 16px;    
+}
+
+.shopping-table td {
+    padding-top: 20px !important;        
+    
+}
+
+.shopping-table tr td input {
+font-size: 18px;    
+    
+}
+
+.shopping-summary {
+    font-size:16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#summary-total {
+    font-weight: bold;    
+    background-color:#f4f4f4;
+    font-size: 22px;
+}
+
+#summary-total-value {
+    color: #e82c0c;
+}
+
+#shopping-cart-product-name {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+#shopping-cart-product-name > a {
+    color:#888;
+}
+
+#shopping-cart-product-name > a:hover {
+    color:#7bae23;
+}
+
+/*#shopping-cart-product-description-container {
+    margin-top:15px;
+}*/
+
+.shopping-cart-table-price {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.shopping-cart-table-subtotal {
+    font-size: 18px;
+    font-weight: bold;
+    color: #e82c0c;
+}
+
+/* ADMIN */
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background-color: aqua;
+    cursor: inherit;
+    display: block;
+}
+
+.txt-error {
+    color:#c72929;
+    font-weight: bold;
+}

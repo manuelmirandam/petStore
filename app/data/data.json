@@ -1,0 +1,307 @@
+{
+	"categories": {
+		"1": {
+			"categoryId": 1,
+			"name": "Apparel"
+		},
+		"2": {
+
+			"categoryId": 2,
+			"name": "Beds and Bedding"
+		},
+		"3": {
+			"categoryId": 3,
+			"name": "Feedings supplies"
+		},
+		"4": {
+			"categoryId": 4,
+			"name": "Food"
+		},
+		"5": {
+			"categoryId": 5,
+			"name": "Furniture"
+		},
+		"6": {
+			"categoryId": 6,
+			"name": "Toys"
+		},
+		"7": {
+			"categoryId": 7,
+			"name": "Treats"
+		}
+	},
+	"animals": {
+		"1": {
+			"animalId": 1,
+			"name": "Bird"
+		},
+		"2": {
+			"animalId": 2,
+			"name": "Cat"
+		},
+		"3": {
+			"animalId": 3,
+			"name": "Dog"
+		},
+		"4": {
+			"animalId": 4,
+			"name": "Fish"
+		},
+		"5": {
+			"animalId": 5,
+			"name": "Small animal"
+		}
+	},
+    "products": {
+      "-KPGLOdLQkXdeOZhDgvb" : {
+        "animalId" : 3,
+        "categoryId" : 4,
+        "imgPath" : "1.jpg",
+        "largeDescription" : "Dogs have specialized daily energy and nutrient requirements which vary with their life stage. Made with high-quality ingredients, Performatrin Adult Formula Dog Food is formulated to give your adult dog complete and balanced nutrition to promote overall health and wellness for its adult years. The diverse nutritional needs of adult dogs can be met with this advanced super-premium formula specially developed for all breeds and sizes.",
+        "name" : "PERFORMATRIN",
+        "shortDescription" : "Adult Chicken & Rice Formula",
+        "stock" : 10,
+        "unitPrice" : 21.99
+      },
+      "-KPGNe7N0yWvnaalylaY" : {
+        "animalId" : 3,
+        "categoryId" : 4,
+        "imgPath" : "2.jpg",
+        "largeDescription" : "DESCRIPTIONGUARANTEED ANALYSISINGREDIENTS\nPERFORMATRINAdult Chicken Formula\nMade with fresh Chicken - contains no by-products. Provides beneficial Herbs, Chelated Minerals and an optimal balance of Omega 6 and 3 Fatty Acids for supple skin and a shiny coat.",
+        "name" : "PERFORMATRIN",
+        "shortDescription" : "Adult Chicken Formula",
+        "stock" : 10,
+        "unitPrice" : 2.49
+      },
+      "-KPGNwu-f1j5PLBrAe3v" : {
+        "animalId" : 3,
+        "categoryId" : 4,
+        "imgPath" : "3.jpg",
+        "largeDescription" : "Grain Free and Gluten Free. Made with fresh Chicken - contains no by-products",
+        "name" : "PERFORMATRIN",
+        "shortDescription" : "Adult Grain Free Chicken Formula",
+        "stock" : 10,
+        "unitPrice" : 2.49
+      },
+      "-KPGO7Wjrxz4K7i1kCIo" : {
+        "animalId" : 3,
+        "categoryId" : 4,
+        "imgPath" : "4.jpg",
+        "largeDescription" : "Made with fresh Chicken - contains no by-products. Provides beneficial Herbs, Chelated Minerals and an optimal balance of Omega 6 and 3 Fatty Acids for supple skin and a shiny coat.",
+        "name" : "PERFORMATRIN",
+        "shortDescription" : "Chicken Formula Adult",
+        "stock" : 10,
+        "unitPrice" : 3.19
+      },
+      "-KPGOLOUiwBuKGvMUO7K" : {
+        "animalId" : 3,
+        "categoryId" : 6,
+        "imgPath" : "16.jpg",
+        "largeDescription" : "Super durable squeak and light toy in fun sports balls shapes! Soft spikes massage gums and aid in dental health. Squeaker and light provides hours of entertainment. Perfect for nighttime play!",
+        "name" : "JUMP",
+        "shortDescription" : "Light Up TPR Sports Balls",
+        "stock" : 10,
+        "unitPrice" : 6.99
+      },
+      "-KPGOUZ-B5R8fo1XcAxZ" : {
+        "animalId" : 3,
+        "categoryId" : 6,
+        "imgPath" : "17.jpg",
+        "largeDescription" : "Durable bright coloured plush toys with the smaller dogs in mind. Seams have been reinforced for added strength. Comes with squeaker.",
+        "name" : "JUMP",
+        "shortDescription" : "Tough Chick",
+        "stock" : 10,
+        "unitPrice" : 12.99
+      },
+      "-KPGOjpNf7_GvgXlmkB-" : {
+        "animalId" : 2,
+        "categoryId" : 4,
+        "imgPath" : "19.jpg",
+        "largeDescription" : "To satisfy your cat's carnivorous palate, this formula begins with 100% Real Chicken combined with Chicken Meal, Chicken Fat and Egg perfect sources of protein and energy for an active adult cat. Made with high-quality ingredients, Performatrin Adult Formula Cat Food is formulated to give your adult cat complete and balanced nutrition to promote overall health and vitality for its adult years.",
+        "name" : "PERFORMATRIN",
+        "shortDescription" : "Adult Formula",
+        "stock" : 10,
+        "unitPrice" : 17.99
+      },
+      "-KPGOu4sGBHBeAAuUDSF" : {
+        "animalId" : 2,
+        "categoryId" : 4,
+        "imgPath" : "20.jpg",
+        "largeDescription" : "Grain-Free with Beef and Beef Liver the only meat source (no By-Products here) This adult cat food includes beneficial herbs and chelated minerals The limited ingredients makes Performatirn Adult Beef and Liver Formula an ideal hypoallergenic diet choice",
+        "name" : "PERFORMATRIN",
+        "shortDescription" : "Adult Grain Free Beef & Liver Formula",
+        "stock" : 10,
+        "unitPrice" : 1.39
+      },
+      "-KPGPH8Ve6UK9-mXdQDK" : {
+        "animalId" : 1,
+        "categoryId" : 4,
+        "imgPath" : "26.jpg",
+        "largeDescription" : "Hagen Finch Seed contains only the highest quality seeds blended in a perfect balance for the nutritional needs of all Finches. The seeds are specially selected for high nutrition and taste appeal. The seeds are air cleaned and then polished, producing a dust-free and appetizing mix eagerly sought by Finches. The seed diet is supplemented with essential vitamins and minerals to ensure the finest possible nutrition for your pet bird. This fortified seed mixture can be used as the main diet for extended periods of time to add variety and interest. Alternately feed assorted Hagen treat seeds and fresh greens.",
+        "name" : "HAGEN",
+        "shortDescription" : "Finch Seed",
+        "stock" : 10,
+        "unitPrice" : 9.99
+      },
+      "-KPGPVeNwCidoCk9ZH1I" : {
+        "animalId" : 1,
+        "categoryId" : 7,
+        "imgPath" : "27.jpg",
+        "largeDescription" : "Brown's Fruit & Nut Cockatiel, Conure & Lovebird Treat is loaded with extremely great stuff! It's jam-packed with a balanced blend of natural, wholesome fruits, nuts, seeds and veggies that your bird will find enticing and nutritious. It's a great way to reward your pets during training or just because you love them.",
+        "name" : "BROWNS",
+        "shortDescription" : "Fruit & Nut Cockatiel Treats",
+        "stock" : 10,
+        "unitPrice" : 6.99
+      },
+      "-KPGQcBL4usb3jUKHgHF" : {
+        "animalId" : 5,
+        "categoryId" : 3,
+        "imgPath" : "51.jpg",
+        "largeDescription" : "Gravity Bin Feeders hold up to two pounds of food giving your pets a five day food supply! Gravity Bin Feeders exclusive Snap-Lock bracket system attaches directly to any wire cage. Gravity Bin Feeders feature an unique, sifter floor design that eliminates pellet dust, helping to prevent respiratory problems in small animals.",
+        "name" : "KAYTEE",
+        "shortDescription" : "Gravity Bin Feeder",
+        "stock" : 10,
+        "unitPrice" : 12.99
+      },
+      "-KPGR8Ishcs5EIRTTbBG" : {
+        "animalId" : 3,
+        "categoryId" : 2,
+        "imgPath" : "52.jpg",
+        "largeDescription" : "A Soft Grey Faux Fur & Linen Bolster Bed. Medium: 24\" x 16\" x 8\". Large: 28\" x 22\" x 9\"",
+        "name" : "BAILEY & BELLA",
+        "shortDescription" : "Stripe Plush Bolster Bed",
+        "stock" : 10,
+        "unitPrice" : 79.99
+      },
+      "-KPGRTdbk-RRB6lRtLv0" : {
+        "animalId" : 3,
+        "categoryId" : 1,
+        "imgPath" : "53.jpg",
+        "largeDescription" : "Reflect your active lifestyle with this comfortable, easy-to-use step-in-style front padded harness featuring reflective stitching for nighttime safety.",
+        "name" : "COASTAL PET PRODUCTS",
+        "shortDescription" : "Reflective Step-in Padded Dog Harness - Berry",
+        "stock" : 10,
+        "unitPrice" : 24.99
+      },
+      "-KPGRiw5oGxK5CizfHjr" : {
+        "animalId" : 3,
+        "categoryId" : 1,
+        "imgPath" : "54.jpg",
+        "largeDescription" : "Reflect your active lifestyle with this comfortable, easy-to-use step-in-style front padded harness featuring reflective stitching for nighttime safety.",
+        "name" : "COASTAL PET PRODUCTS",
+        "shortDescription" : "Reflective Step-in Padded Dog Harness - Sapphire",
+        "stock" : 10,
+        "unitPrice" : 24.99
+      },
+      "-KPGS9hLmDTqxvqNmeo9" : {
+        "animalId" : 4,
+        "categoryId" : 4,
+        "imgPath" : "29.jpg",
+        "largeDescription" : "Designed to resemble small floating insects on the water surface to trigger an immediate feeding response, Betta Bites are a nutrient-rich, appetite stimulating pellet packed with color enhancers.",
+        "name" : "ELIVE",
+        "shortDescription" : "Betta Bites",
+        "stock" : 10,
+        "unitPrice" : 4.49
+      },
+      "-KPGSKqzTtgyJnY8MeqL" : {
+        "animalId" : 4,
+        "categoryId" : 4,
+        "imgPath" : "31.jpg",
+        "largeDescription" : "Ideal for Algae Eaters. A Scientific Diet For Plecostomus And Other Algae Eating Fishes, Including Marine Herbivores. Available sizes:",
+        "name" : "HIKARI",
+        "shortDescription" : "Algae Wafers",
+        "stock" : 10,
+        "unitPrice" : 4.99
+      },
+      "-KPGSfVcJvTKIrPv-keV" : {
+        "animalId" : 5,
+        "categoryId" : 4,
+        "imgPath" : "37.jpg",
+        "largeDescription" : "Cuisine Guinea Pig Pellets is a formulated pellet for a nutrition complete, fiber rich diet to aid the guinea pigs normal digestive process.",
+        "name" : "CUISINE",
+        "shortDescription" : "Guinea Pig Pellets",
+        "stock" : 10,
+        "unitPrice" : 8.99
+      },
+      "-KPGSnnrf3nw9ILWpcYv" : {
+        "animalId" : 5,
+        "categoryId" : 4,
+        "imgPath" : "39.jpg",
+        "largeDescription" : "An enriched diet pellet formulated for a long and healthy life of your pet Guinea Pig. Fresh, premium quality ingredients. Complete and balanced food with essential nutrients guinea pigs need. Enhanced with Ascorbic Acid (Vitamin C).",
+        "name" : "HEALTH DIET",
+        "shortDescription" : "Guinea Pig Pellets",
+        "stock" : 10,
+        "unitPrice" : 6.99
+      },
+      "-KPGT5q-kyhFhqGLgCYK" : {
+        "animalId" : 1,
+        "categoryId" : 5,
+        "imgPath" : "55.jpg",
+        "largeDescription" : "Prevue Pet Products Wrought Iron Select Cage in Coco offers quality craftsmanship at an affordable cost. Constructed of wrought iron with a cagetop playstand to keep your bird entertained and content, a heavy-duty push button lock keeps your bird securely inside the cage when playtime is over. This select bird cage also includes four stainless steel cups, two wood perches and a castered stand for portability. Both drawers and bottom grille are removable for ease of cleaning while the rounded corner seed guards control mess around the cage. Our Wrought Iron Select Cage in Coco measures 18\" Long, 18\" Wide, 57\" High with 3/4\" wire spacing.",
+        "name" : "PREVUE",
+        "shortDescription" : "3151 Wrought Iron Cage Coco",
+        "stock" : 10,
+        "unitPrice" : 259.99
+      },
+      "-KPGTKhUzjeI1IR9QYM_" : {
+        "animalId" : 1,
+        "categoryId" : 5,
+        "imgPath" : "56.jpg",
+        "largeDescription" : "Prevue Pet Products Double Roof Cage Kit contains everything you need to keep your bird safe and entertained! Our Round Roof Cage Kit includes two hooded plastic cups, 2 - 3 wood perches, one cuttlebone, one solid wood ladder, one mineral treat and a variety of toys. Measures 14\" Long, 11\" Wide, 19\" High with 3/8\" Wire Spacing, designed for small birds.",
+        "name" : "PREVUE",
+        "shortDescription" : "Double Roof Top Cage Kit",
+        "stock" : 10,
+        "unitPrice" : 49.99
+      },
+      "-KPGTafVzKVG46ZUi2Cp" : {
+        "animalId" : 3,
+        "categoryId" : 2,
+        "imgPath" : "57.jpg",
+        "largeDescription" : "Oval shape bed with dark charcoal polyester outer fabric and soft plush inside and cushion. Available in sizes 22\" x 17\" x 5.5\" and 26\" x 21\" x 6\".",
+        "name" : "BAILEY & BELLA",
+        "shortDescription" : "Oval Bed Charcoal Grey",
+        "stock" : 10,
+        "unitPrice" : 32.99
+      },
+      "-KPGTs46gT-yjj0nIDNi" : {
+        "animalId" : 3,
+        "categoryId" : 2,
+        "imgPath" : "58.jpg",
+        "largeDescription" : "The oval ring creates the feeling of security pets love, while the removable tufted cushion can be used as a crate or travel mat. The circular tufting creates an elegant upholstered look while ensuring fibre does not clump or shift when washing. Made from plush Microvelvets, this durable upholstery fabric repels pet hair, dirt and moisture. Zippered removeable cover for easy machine washing and drying.",
+        "name" : "BOWSERS",
+        "shortDescription" : "Donut Bed - Beige",
+        "stock" : 10,
+        "unitPrice" : 89.99
+      },
+      "-KPGUFirUFpRE8doaJ7E" : {
+        "animalId" : 3,
+        "categoryId" : 3,
+        "imgPath" : "59.jpg",
+        "largeDescription" : "Combining flair with functionality, the eye catching Bone Bowl from Hing Designs is available in a range of colours to compliment any home. British designed and manufactured, these dual feeders have two removable stainless steel bowls which are dishwasher safe, anti slip rubber feet, made form durable PVC plastic and are easy to wipe clean.",
+        "name" : "HING DESIGNS",
+        "shortDescription" : "The Bone Bowl Red",
+        "stock" : 10,
+        "unitPrice" : 27.99
+      },
+      "-KPGUV1-zeuzY3QiuW_K" : {
+        "animalId" : 2,
+        "categoryId" : 3,
+        "imgPath" : "60.jpg",
+        "largeDescription" : "Premium Stainless Steel High-quality, heavy-duty Dishwasher safe No skidding, no noise Bonded rubber ring",
+        "name" : "DURAPET",
+        "shortDescription" : "Cat Bowl",
+        "stock" : 10,
+        "unitPrice" : 5.99
+      },
+      "-KPGUtMiZ56HDCZfZZ-2" : {
+        "animalId" : 3,
+        "categoryId" : 7,
+        "imgPath" : "14.jpg",
+        "largeDescription" : "Made from seasoned meatNaturally roastedReal beef",
+        "name" : "BARNSDALE FARMS",
+        "shortDescription" : "Beef Strips",
+        "stock" : 10,
+        "unitPrice" : 5.69
+      }
+    }
+}

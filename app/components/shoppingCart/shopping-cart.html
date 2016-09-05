@@ -1,0 +1,82 @@
+<div class="row">
+    <div class="col-md-12">
+        <h3>Shopping cart</h3>                            
+        <hr>
+    </div>                        
+</div>
+<div class="container">                                                  
+    <div class="row">
+        <div class="col-md-12">    
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered shopping-table">
+                        <tr>
+                            <th class="col-md-5">Product name</th>                            
+                            <th class="col-md-2">Unit price</th>
+                            <th class="col-md-1">Quantity</th>
+                            <th class="col-md-2">Subtotal</th>
+                            <th></th>
+                        </tr>
+                        <tr ng-repeat="shoppingCartElement in vm.shoppingCartList">
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <a href="#/productDetail/{{ shoppingCartElement.$id }}">
+                                            <img class="img-rounded" ng-src="/assets/img/products/{{ shoppingCartElement.imgPath }}" width="180px" height="180px">
+                                        </a>              
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div id="shopping-cart-product-description-container">
+                                            <div id="shopping-cart-product-name">
+                                                <a href="#/productDetail/{{ shoppingCartElement.$id }}">{{ shoppingCartElement.name }}</a>
+                                            </div>
+                                            <div id="shopping-cart-product-short-description">
+                                                {{ shoppingCartElement.shortDescription }}
+                                            </div>
+                                        </div>                                                            
+                                    </div>
+                                </div>                                                                                                                             
+                            </td>                            
+                            <td class="shopping-cart-table-price">{{ shoppingCartElement.unitPrice | currency }}</td>
+                            <td>
+                                <span class="custom-qty-input">
+                                    <input type="number" name="quantity"  min="1" max="{{ shoppingCartElement.stock }}" ng-model="shoppingCartElement.quantity" ng-change="vm.quantityChange(shoppingCartElement)">
+                                </span>
+                            </td>
+                            <td class="shopping-cart-table-subtotal">{{ shoppingCartElement.subtotal | currency }}</td>
+                            <td><button class="btn btn-warning" ng-click="vm.deleteProductFromCart(shoppingCartElement, $index)"><i class="fa fa-times"></i></button></td>
+                        </tr>
+                    </table>     
+                </div>                                                                           
+            </div>
+        </div>                         
+    </div>      
+    <div class="row">       
+        <div class="col-md-8"></div>
+        <div class="col-md-4">
+         <table class="table table-bordered table-responsive shopping-summary">
+                <tr>
+                    <td class="col-md-6">SUBTOTAL:</td>
+                    <td class="col-md-6">{{ vm.summary.subtotal | currency }}</td>
+                </tr>
+                <tr>
+                    <td>SHIPPING (10%):</td>
+                    <td>{{ vm.summary.shipping | currency }}</td>
+                </tr>
+                <tr>
+                    <td>TAX (15%):</td>
+                    <td>{{ vm.summary.tax | currency }}</td>
+                </tr>
+                <tr id="summary-total">
+                    <td id="summary-total-tag"><b>Total:</b></td>
+                    <td id="summary-total-value">{{ vm.summary.total | currency }}</td>
+                </tr>
+            </table>
+
+        </div>
+        <div class="col-md-12">
+            <button class="btn btn-warning pull-right" style="margin:0 0 10px 10px;" ng-click="vm.checkout()">Checkout</button>   
+            <a href="#/index" class="btn btn-warning pull-right" style="margin-bottom:10px;">Continue shopping</a>
+        </div>           
+    </div>
+</div>    

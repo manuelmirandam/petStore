@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-md-12">
+        <h3>Our Products</h3>                            
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-10">
+        <button class="btn btn-warning" ng-click="vm.allProductsClick()">All</button>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-sm-6 col-md-3 animated fadeIn" ng-repeat="product in vm.products | limitTo: vm.staticContent.limit">
+        <div class="thumbnail">
+            <img class="img-rounded" ng-src="../assets/img/products/{{ product.imgPath }}">
+            <div class="caption text-center">
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.unitPrice | currency }}</p>
+                <p><a href="#/productDetail/{{ product.$id }}" class="btn btn-warning" role="button">View Detail</a></p>
+            </div>
+        </div>
+    </div>    
+    <div class="col-sm-12 btn-load-more-container">
+        <button type="button" class="btn btn-danger" ng-click="vm.loadMoreProducts()"><i class="{{ vm.staticContent.loadMoreIcon }}"></i> {{ vm.staticContent.loadMoreLabel }}</button>
+    </div>
+</div>  

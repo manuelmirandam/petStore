@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col-md-12">
+        <h3>Product Management Panel</h3>                          
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <a href="#/newProduct" class="btn btn-warning" ng-click="vm.allProductsClick()"><i class="fa fa-plus"></i> New</a>
+    </div>   
+</div>
+<hr>
+<div class="container">                                                  
+    <div class="row">
+        <div class="col-md-12">    
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered shopping-table">
+                        <tr>
+                            <th class="col-md-5">Product name</th>                            
+                            <th class="col-md-2">Unit price</th>
+                            <th class="col-md-2">Stock</th>
+                            <th></th>
+                        </tr>
+                        <tr ng-repeat="product in vm.products">
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <a href="#/productDetail/{{ product.$id }}">
+                                            <img class="img-rounded" ng-src="/assets/img/products/{{ product.imgPath }}" width="180px" height="180px">
+                                        </a>              
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div id="shopping-cart-product-description-container">
+                                            <div id="shopping-cart-product-name">
+                                                <a href="#/productDetail/{{ product.$id }}">{{ product.name }}</a>
+                                            </div>
+                                            <div id="shopping-cart-product-short-description">
+                                                {{ product.shortDescription }}
+                                            </div>
+                                        </div>                                                            
+                                    </div>
+                                </div>                                                                                                                             
+                            </td>                            
+                            <td class="shopping-cart-table-price">{{ product.unitPrice }}</td>
+                            <td>{{ product.stock }}</td>
+                            <td>
+                                <a class="btn btn-warning" ng-click="vm.deleteProduct(product, $index)"><i class="fa fa-times"></i></a>
+                                <a href="#/editProduct/{{ product.$id }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                            </td>
+                        </tr>
+                    </table>     
+                </div>                                                                           
+            </div>
+        </div>                         
+    </div>   
+</div>    
