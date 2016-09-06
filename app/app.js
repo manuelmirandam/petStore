@@ -5,17 +5,20 @@
         .module('petStore', [
             'ngRoute',
             'firebase',
+            'blockUI',
             'petStore.controllers',
             'petStore.directives',
             'petStore.services',
             'petStore.filters'
         ])
         .config(Config)
+        .run(Run)
         .constant('firebaseUrl', 'https://petstore-f6220.firebaseio.com/');
     
     Config.$inject = ['$routeProvider'];
+    Run.$inject = ['$rootScope', 'blockUI', '$location'];
     
-    function Config($routeProvider) {        
+    function Config($routeProvider) {
         $routeProvider
             .when('/', {
                 controller: 'ProductListController',
@@ -65,6 +68,26 @@
                     }
                 }
             })
-            .otherwise('/index');
+            .when('/error/:status', {
+                controller: 'ErrorController',
+                controllerAs: 'vm',
+                templateUrl: 'shared/errors/error.html'
+            })
+            .otherwise('/error/404');
+    }
+    
+    function Run($rootScope, blockUI, $location) {
+        $rootScope.$on('$routeChangeStart', function () {
+            blockUI.start();
+        });
+        
+        $rootScope.$on('$routeChangeSuccess', function () {
+            blockUI.stop();
+        });
+        
+        $rootScope.$on('$routeChangeError', function () {
+            blockUI.stop();
+            $location.path('error/500');
+        });
     }
 }());

@@ -5,9 +5,9 @@
         .module('petStore.services')
         .factory('ProductService', ProductService);
     
-    ProductService.$inject = ['$firebaseObject', '$firebaseArray', 'firebaseUrl'];
+    ProductService.$inject = ['$firebaseObject', '$firebaseArray', 'firebaseUrl', '$timeout'];
     
-    function ProductService($firebaseObject, $firebaseArray, firebaseUrl) {
+    function ProductService($firebaseObject, $firebaseArray, firebaseUrl, $timeout) {
         var productRef = new Firebase(firebaseUrl + 'products');
         
         var productService = {
@@ -16,7 +16,7 @@
             save: save,
             update: update,
             deleteProduct: deleteProduct
-        }
+        };
         
         return productService;
 
@@ -55,7 +55,7 @@
                     unitPrice: product.unitPrice,
                     animalId: product.animalId,
                     categoryId: product.categoryId
-            });
+                });
         }
 
         /*
