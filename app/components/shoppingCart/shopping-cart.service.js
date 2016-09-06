@@ -46,7 +46,9 @@
          */
         function deleteItemsFromCache() {
             var dataCache = $cacheFactory.get('shoppingCartCache');
-            dataCache.remove('shoppingCartItems');
+            if(dataCache) {
+                dataCache.remove('shoppingCartItems');
+            }
         }
     }
 }());
