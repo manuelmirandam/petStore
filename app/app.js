@@ -3,54 +3,60 @@
     
     angular
         .module('petStore', [
-            'ngRoute',
             'firebase',
             'blockUI',
+            'ui.router',
             'petStore.controllers',
             'petStore.directives',
             'petStore.services',
             'petStore.filters'
         ])
         .config(Config)
-        .run(Run)
-        .constant('firebaseUrl', 'https://petstore-f6220.firebaseio.com/');
+        .run(Run);
     
-    Config.$inject = ['$routeProvider'];
-    Run.$inject = ['$rootScope', 'blockUI', '$location'];
+    Config.$inject = ['$stateProvider', '$urlRouterProvider'];
+    Run.$inject = ['$rootScope', 'blockUI', '$state'];
     
-    function Config($routeProvider) {
-        $routeProvider
-            .when('/', {
+    function Config($stateProvider, $urlRouterProvider) {
+        $stateProvider
+            .state('/', {
+                url: '/',
                 controller: 'ProductListController',
                 controllerAs: 'vm',
                 templateUrl: 'components/productList/product-list.html'
             })
-            .when('/index', {
+            .state('index', {
+                url: '/index',
                 controller: 'ProductListController',
                 controllerAs: 'vm',
                 templateUrl: 'components/productList/product-list.html'
             })
-            .when('/productList/:filterLbl/:filterVal', {
+            .state('productList', {
+                url: '/productList/{filterLbl}/{filterVal}',
                 controller: 'ProductListController',
                 controllerAs: 'vm',
                 templateUrl: 'components/productList/product-list.html'
             })
-            .when('/productDetail/:productId', {
+            .state('productDetail', {
+                url: '/productDetail/{productId}',
                 controller: 'ProductDetailController',
                 controllerAs: 'vm',
                 templateUrl: 'components/productDetail/product-detail.html'
             })
-            .when('/shoppingCart', {
+            .state('shoppingCart', {
+                url: '/shoppingCart',
                 controller: 'ShoppingCartController',
                 controllerAs: 'vm',
                 templateUrl: 'components/shoppingCart/shopping-cart.html'
             })
-            .when('/adminProduct', {
+            .state('adminProduct', {
+                url: '/adminProduct',
                 controller: 'AdminProductController',
                 controllerAs: 'vm',
                 templateUrl: 'components/admin/admin-product.html'
             })
-            .when('/newProduct', {
+            .state('newProduct', {
+                url: '/newProduct',
                 controller: 'AdminAddUpdateProductController',
                 controllerAs: 'vm',
                 templateUrl: 'components/admin/admin-add-update-product.html',
@@ -58,36 +64,39 @@
                     Product: function () { return {}; }
                 }
             })
-            .when('/editProduct/:productId', {
+            .state('editProduct', {
+                url: '/editProduct/{productId}',
                 controller: 'AdminAddUpdateProductController',
                 controllerAs: 'vm',
                 templateUrl: 'components/admin/admin-add-update-product.html',
                 resolve: {
-                    Product: function (ProductService, $route) {
-                        return ProductService.getById($route.current.params.productId);
+                    Product: function (ProductService, $stateParams) {
+                        return ProductService.getById($stateParams.productId);
                     }
                 }
             })
-            .when('/error/:status', {
+            .state('error', {
+                url: '/error/:status',
                 controller: 'ErrorController',
                 controllerAs: 'vm',
                 templateUrl: 'shared/errors/error.html'
-            })
-            .otherwise('/error/404');
+            });
+            
+        $urlRouterProvider.otherwise('/error/404');
     }
     
-    function Run($rootScope, blockUI, $location) {
-        $rootScope.$on('$routeChangeStart', function () {
+    function Run($rootScope, blockUI, $state) {
+        $rootScope.$on('$stateChangeStart', function () {
             blockUI.start();
         });
         
-        $rootScope.$on('$routeChangeSuccess', function () {
+        $rootScope.$on('$stateChangeSuccess', function () {
             blockUI.stop();
         });
         
-        $rootScope.$on('$routeChangeError', function () {
+        $rootScope.$on('$stateChangeError', function () {
             blockUI.stop();
-            $location.path('error/500');
+            $state.go('error', { status: '500' });
         });
     }
 }());

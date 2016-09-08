@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="col-md-2 shopping-cart">
                                      <form class="navbar-form navbar-right" role="search">                                        
-                                          <a href="#/shoppingCart" class="btn btn-danger"><i class="fa fa-shopping-cart"></i> View cart</a>                                        
+                                          <a ui-sref="shoppingCart" class="btn btn-danger"><i class="fa fa-shopping-cart"></i> View cart</a>                                        
                                     </form>                                                                                                            
                                 </div>                            
                             </div>                            
@@ -59,7 +59,7 @@
                                 <div class="panel-body">                             
                                     <ul class="category-body">
                                         <li ng-repeat="category in vm.categories">
-                                            <a href="#/productList/cat/{{ category.categoryId }}">{{ category.name }}</a>
+                                            <a ui-sref="productList({ filterLbl: 'cat', filterVal: category.categoryId })">{{ category.name }}</a>
                                         </li>                                        
                                     </ul>
                                 </div>
@@ -71,7 +71,7 @@
                                 <div class="panel-body">                             
                                     <ul class="category-body">
                                         <li ng-repeat="animal in vm.animals">
-                                            <a href="#/productList/animal/{{ animal.animalId }}">{{ animal.name }}</a>
+                                            <a ui-sref="productList({ filterLbl: 'animal', filterVal: animal.animalId })">{{ animal.name }}</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -81,7 +81,7 @@
                 </div>
                 <!-- Product List -->   
                 <div class="col-md-8">  
-                    <div ng-view class="animated fadeIn"></div>                        
+                    <div ui-view class="animated fadeIn"></div>                        
                 </div>          
             </div>                  
         </div>
@@ -93,13 +93,13 @@
                     <dl class="footer-nav">
                         <dt class="nav-title">CATERORIES</dt>
                         <dd class="nav-item" ng-repeat="category in vm.categories">
-                            <a href="#/productList/cat/{{ category.categoryId }}">{{ category.name }}</a>
+                            <a ui-sref="productList({ filterLbl: 'cat', filterVal: category.categoryId })">{{ category.name }}</a>
                         </dd>                       
                     </dl>
                     <dl class="footer-nav">                        
                         <dt class="nav-title">ANIMALS</dt>
                         <dd class="nav-item" ng-repeat="animal in vm.animals">
-                            <a href="#/productList/animal/{{ animal.animalId }}/">{{ animal.name }}</a>
+                            <a ui-sref="productList({ filterLbl: 'animal', filterVal: animal.animalId })">{{ animal.name }}</a>
                         </dd>
                     </dl>
                     <dl class="footer-nav">
@@ -113,7 +113,7 @@
                         <dt class="nav-title">CONTACT</dt>
                         <dd class="nav-item"><a href="#">Basic Info</a></dd>                        
                         <dd class="nav-item"><a href="#">Conctact Form</a></dd>
-                        <dd class="nav-item"><a href="#/adminProduct">Admin Panel</a></dd>
+                        <dd class="nav-item"><a ui-sref="adminProduct">Admin Panel</a></dd>
                     </dl>
                 </div>
                 <div class="footer-copyright text-center">Copyright © 2016 PetStore!. All rights reserved.</div>
@@ -131,10 +131,12 @@
         
         <!-- Angular files -->
         <script src="../assets/lib/angular.min.js"></script>
-        <script src="../assets/lib/angular-route.min.js"></script>
                 
         <!-- Angular blockUI -->
         <script src="../assets/lib/angular-block-ui.min.js"></script>
+        
+        <!-- Angular ui-router -->
+        <script src="../assets/lib/angular-ui-router.min.js"></script>
         
         <!-- Firebase -->
         <script src="../assets/lib/firebase.js"></script>
@@ -143,12 +145,14 @@
         <script src="../assets/lib/angularfire.min.js"></script>
         
         <!-- Ecommerce App files -->
+        <script src="app.js"></script>
         <script src="../assets/js/custom-on-change.directive.js"></script>
         <script src="components/productDetail/stock-filter.js"></script>
+        <script src="shared/constants.js"></script>
         <script src="components/home/categories/category.service.js"></script>
         <script src="components/home/animals/animal.service.js"></script>
         <script src="components/admin/product.service.js"></script>
-        <script src="components/shoppingCart/shopping-cart.service.js"></script>
+        <script src="components/shoppingCart/shopping-cart.service.js"></script>        
         <script src="components/home/home.controller.js"></script>
         <script src="components/productList/product-list.controller.js"></script>
         <script src="components/productDetail/product-detail.controller.js"></script>        
@@ -157,6 +161,5 @@
         <script src="components/admin/admin-product.controller.js"></script>
         <script src="components/admin/admin-add-update-product.controller.js"></script>      
         <script src="shared/errors/error-controller.js"></script>
-        <script src="app.js"></script>
     </body>
 </html>

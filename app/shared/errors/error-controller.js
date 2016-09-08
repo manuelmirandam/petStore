@@ -5,20 +5,20 @@
         .module('petStore.controllers')
         .controller('ErrorController', ErrorController);
     
-    ErrorController.$inject = ['$routeParams'];
+    ErrorController.$inject = ['$stateParams', 'constants'];
     
-    function ErrorController($routeParams) {
+    function ErrorController($stateParams, constants) {
         var vm = this;
                         
         // Let's validate the error status and display the appropiate message
-        switch ($routeParams.status) {
+        switch ($stateParams.status) {
         case '404':
-            vm.title = "Page not found";
-            vm.description = "We're sorry. The page that you requested cannot be found";
+            vm.title = constants.ERROR_404_TITLE;
+            vm.description = constants.ERROR_404_DESCRIPTION;
             break;
         case '500':
-            vm.title = "Server error";
-            vm.description = "We're sorry. The server encountered an internal error and was unable to complete your request. Please try again later";
+            vm.title = constants.ERROR_500_TITLE;
+            vm.description = constants.ERROR_500_DESCRIPTION;
             break;
         }
     }

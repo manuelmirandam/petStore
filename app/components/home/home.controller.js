@@ -5,16 +5,19 @@
         .module('petStore.controllers', [])
         .controller('HomeController', HomeController);
     
-    HomeController.$inject = ['CategoryService', 'AnimalService', '$location'];
+    HomeController.$inject = ['CategoryService', 'AnimalService', '$state'];
     
-    function HomeController(CategoryService, AnimalService, $location) {
+    function HomeController(CategoryService, AnimalService, $state) {
         var vm = this;
         vm.categories = CategoryService.getAll();
         vm.animals = AnimalService.getAll();
         vm.search = search;
             
+        /*
+         * Method to search a product by a given search filter criteria
+         */
         function search() {
-            $location.path('/productList/search/' + vm.searchText);
+            $state.go('productList', { filterLbl: 'search', filterVal: vm.searchText });
         }
     }
 }());

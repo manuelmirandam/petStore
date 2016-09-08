@@ -5,10 +5,10 @@
         .module('petStore.services')
         .factory('ShoppingCartService', ShoppingCartService);
         
-    ShoppingCartService.$inject = ['$firebaseArray', '$firebaseObject', 'firebaseUrl', '$cacheFactory'];
+    ShoppingCartService.$inject = ['$firebaseArray', '$firebaseObject', 'constants', '$cacheFactory'];
     
-    function ShoppingCartService($firebaseArray, $firebaseObject, firebaseUrl, $cacheFactory) {
-        var shoppingRef = new Firebase(firebaseUrl + 'shoppingCart');
+    function ShoppingCartService($firebaseArray, $firebaseObject, constants, $cacheFactory) {
+        var shoppingRef = new Firebase(constants.FIREBASE_URL + 'shoppingCart');
         var shoppingCartService = {
             addToCart: addToCart,
             getAll: getAll,
@@ -46,7 +46,7 @@
          */
         function deleteItemsFromCache() {
             var dataCache = $cacheFactory.get('shoppingCartCache');
-            if(dataCache) {
+            if (dataCache) {
                 dataCache.remove('shoppingCartItems');
             }
         }

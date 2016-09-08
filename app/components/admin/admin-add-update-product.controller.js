@@ -5,16 +5,16 @@
         .module('petStore.controllers')
         .controller('AdminAddUpdateProductController', AdminAddUpdateProductController);
     
-    AdminAddUpdateProductController.$inject = ['$scope', '$location', 'ProductService', 'Product', '$anchorScroll'];
+    AdminAddUpdateProductController.$inject = ['$scope', '$state', 'ProductService', 'Product', '$anchorScroll'];
     
-    function AdminAddUpdateProductController($scope, $location, ProductService, Product, $anchorScroll) {
+    function AdminAddUpdateProductController($scope, $state, ProductService, Product, $anchorScroll) {
         var vm = this;
         vm.product = Product;
         vm.uploadFile = uploadFile;
         vm.saveProduct = saveProduct;
         vm.reset = reset;
         
-        $anchorScroll()
+        $anchorScroll();
         
         /*
          * Method to put the file name into the input text for the image
@@ -26,6 +26,9 @@
             });
         }
         
+        /*
+         * Method to save or update a product
+         */
         function saveProduct(product) {
             if (vm.productForm.$valid) {
                 if (product.$id !== undefined && product.$id !== "") {
@@ -34,13 +37,16 @@
                     ProductService.save(product);
                 }
 
-                $location.path('/adminProduct');
+                $state.go('adminProduct');
             }
         }
-                        
+              
+        /*
+         * Method to reset the product form
+         */
         function reset() {
             vm.product = {};
-            vm.productForm.$setPristine();            
+            vm.productForm.$setPristine();
             vm.productForm.$setUntouched();
         }
     }

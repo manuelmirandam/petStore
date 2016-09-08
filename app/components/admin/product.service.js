@@ -5,10 +5,10 @@
         .module('petStore.services')
         .factory('ProductService', ProductService);
     
-    ProductService.$inject = ['$firebaseObject', '$firebaseArray', 'firebaseUrl', '$timeout'];
+    ProductService.$inject = ['$firebaseObject', '$firebaseArray', 'constants', '$timeout'];
     
-    function ProductService($firebaseObject, $firebaseArray, firebaseUrl, $timeout) {
-        var productRef = new Firebase(firebaseUrl + 'products');
+    function ProductService($firebaseObject, $firebaseArray, constants, $timeout) {
+        var productRef = new Firebase(constants.FIREBASE_URL + 'products');
         
         var productService = {
             getAll: getAll,

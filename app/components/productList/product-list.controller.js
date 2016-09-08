@@ -5,14 +5,14 @@
         .module('petStore.controllers')
         .controller('ProductListController', ProductListController);
     
-    ProductListController.$inject = ['ProductService', '$routeParams', '$filter', '$anchorScroll'];
+    ProductListController.$inject = ['ProductService', '$stateParams', '$filter', '$anchorScroll', 'constants'];
     
-    function ProductListController(ProductService, $routeParams, $filter, $anchorScroll) {
+    function ProductListController(ProductService, $stateParams, $filter, $anchorScroll, constants) {
         var vm = this;
         vm.staticContent = {
             limit: 8,
-            loadMoreLabel: 'Load more',
-            loadMoreIcon: 'fa fa-plus',
+            loadMoreLabel: constants.LOAD_MORE,
+            loadMoreIcon: constants.LOAD_MORE_ICON,
             numberOfColumns: 4
         };
         
@@ -22,14 +22,17 @@
         $anchorScroll();
         getAllProducts();
          
+        /*
+         * Load and filter produts depending on the searching criteria
+         */
         function getAllProducts() {
             ProductService.getAll().$loaded().then(function (products) {
-                if ($routeParams.filterLbl === "cat") {
-                    vm.products = $filter('filter')(products, { categoryId: $routeParams.filterVal });
-                } else if ($routeParams.filterLbl === "animal") {
-                    vm.products = $filter('filter')(products, { animalId: $routeParams.filterVal });
-                } else if ($routeParams.filterLbl === "search") {
-                    vm.products = $filter('filter')(products, { $: $routeParams.filterVal });
+                if ($stateParams.filterLbl === "cat") {
+                    vm.products = $filter('filter')(products, { categoryId: $stateParams.filterVal });
+                } else if ($stateParams.filterLbl === "animal") {
+                    vm.products = $filter('filter')(products, { animalId: $stateParams.filterVal });
+                } else if ($stateParams.filterLbl === "search") {
+                    vm.products = $filter('filter')(products, { $: $stateParams.filterVal });
                 } else {
                     vm.products = products;
                 }
@@ -37,23 +40,32 @@
             });
         }
         
+        /*
+         * Verify whether there are more products available to display
+         */
         function verifyProductLimit() {
             if (vm.staticContent.limit >= vm.products.length) {
-                vm.staticContent.loadMoreLabel = 'No more products';
+                vm.staticContent.loadMoreLabel = constants.NO_MORE_PRODUCTS;
                 vm.staticContent.loadMoreIcon = '';
                 return;
             }
         }
         
+        /*
+         * Display all products on the screen
+         */
         function allProductsClick() {
             ProductService.getAll().$loaded()
                 .then(function (products) {
                     vm.products = products;
                     vm.staticContent.limit = vm.products.length;
                     verifyProductLimit();
-            });
+                });
         }
         
+        /*
+         * Load a new row of products on the screen
+         */
         function loadMoreProducts() {
             vm.staticContent.limit += vm.staticContent.numberOfColumns;
             verifyProductLimit();

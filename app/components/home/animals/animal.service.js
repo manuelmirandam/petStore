@@ -5,10 +5,10 @@
         .module('petStore.services')
         .factory('AnimalService', AnimalService);
     
-    AnimalService.$inject = ['firebaseUrl', '$firebaseArray'];
+    AnimalService.$inject = ['constants', '$firebaseArray'];
     
-    function AnimalService(firebaseUrl, $firebaseArray) {
-        var animalRef = new Firebase(firebaseUrl + 'animals');
+    function AnimalService(constants, $firebaseArray) {
+        var animalRef = new Firebase(constants.FIREBASE_URL + 'animals');
         var animalService = {
             getAll: getAll
         };
@@ -17,6 +17,6 @@
         
         function getAll() {
             return $firebaseArray(animalRef);
-        }                
+        }
     }
 }());

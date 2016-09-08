@@ -5,9 +5,9 @@
         .module('petStore.controllers')
         .controller('ShoppingCartController', ShoppingCartController);
     
-    ShoppingCartController.$inject = ['ShoppingCartService', 'ProductService', '$location', '$anchorScroll', '$route', '$cacheFactory'];
+    ShoppingCartController.$inject = ['ShoppingCartService', 'ProductService', '$state', '$anchorScroll', '$cacheFactory'];
     
-    function ShoppingCartController(ShoppingCartService, ProductService, $location, $anchorScroll, $route, $cacheFactory) {
+    function ShoppingCartController(ShoppingCartService, ProductService, $state, $anchorScroll, $cacheFactory) {
         var vm = this;
         
         vm.shoppingCartList = [];
@@ -57,12 +57,15 @@
                     });
             }
         }
-                        
+          
+        /*
+         * Method to delete a product from cart/cache
+         */
         function deleteProductFromCart(product, index) {
             ShoppingCartService.deleteById(product)
                 .then(function () {
                     ShoppingCartService.deleteItemsFromCache();
-                    $route.reload();
+                    $state.reload();
                 });
         }
                 
@@ -86,7 +89,7 @@
                 ShoppingCartService.deleteById(product);
             });
             
-            $location.path('/productList');
+            $state.go('productList');
         }
         
         /*
@@ -98,7 +101,7 @@
                 vm.summary.subtotal += value.subtotal;
             });
 
-            // Once we hace the subtotal, we calculate the tax and shipping
+            // Once we have the subtotal, we calculate the tax and shipping
             vm.summary.shipping = vm.summary.subtotal * 0.10;
             vm.summary.tax = vm.summary.subtotal * 0.15;
             vm.summary.total = vm.summary.subtotal + vm.summary.tax + vm.summary.shipping;

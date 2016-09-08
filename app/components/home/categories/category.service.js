@@ -5,18 +5,18 @@
         .module('petStore.services', [])
         .factory('CategoryService', CategoryService);
          
-    CategoryService.$inject = ['firebaseUrl', '$firebaseArray'];
+    CategoryService.$inject = ['constants', '$firebaseArray'];
                                      
-    function CategoryService(firebaseUrl, $firebaseArray) {
-        var categoryRef = new Firebase(firebaseUrl + 'categories');
+    function CategoryService(constants, $firebaseArray) {
+        var categoryRef = new Firebase(constants.FIREBASE_URL + 'categories');
         var categoryService = {
             getAll: getAll
         };
-                
+         
+        return categoryService;
+        
         function getAll() {
             return $firebaseArray(categoryRef);
         }
-
-        return categoryService;
     }
 }());

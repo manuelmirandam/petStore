@@ -5,23 +5,26 @@
         .module('petStore.controllers')
         .controller('ProductDetailController', ProductDetailController);
     
-    ProductDetailController.$inject = ['$routeParams', 'ProductService', 'ShoppingCartService', '$location', '$anchorScroll', '$log'];
+    ProductDetailController.$inject = ['$stateParams', 'ProductService', 'ShoppingCartService', '$state', '$anchorScroll', '$log'];
     
-    function ProductDetailController($routeParams, ProductService, ShoppingCartService, $location, $anchorScroll, $log) {
+    function ProductDetailController($stateParams, ProductService, ShoppingCartService, $state, $anchorScroll, $log) {
         var vm = this;
         vm.quantity = 1;
-        vm.product = ProductService.getById($routeParams.productId);
+        vm.product = ProductService.getById($stateParams.productId);
         vm.recommendedProducts = [];
         vm.addToCart = addToCart;
                       
         $anchorScroll();
         getRecommendedProducts();
         
+        /*
+         * Method to a add a product in the shopping cart
+         */
         function addToCart() {
             vm.product.quantity = vm.quantity;
             ShoppingCartService.addToCart(vm.product);
             ShoppingCartService.deleteItemsFromCache();
-            $location.path('/shoppingCart');
+            $state.go('shoppingCart');
         }
         
         function getRecommendedProducts() {
