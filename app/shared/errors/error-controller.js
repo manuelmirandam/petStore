@@ -2,7 +2,7 @@
     'use strict';
     
     angular
-        .module('petStore.controllers')
+        .module('petStore.error.controllers', [])
         .controller('ErrorController', ErrorController);
     
     ErrorController.$inject = ['$stateParams', 'constants'];

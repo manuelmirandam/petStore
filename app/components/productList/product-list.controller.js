@@ -2,7 +2,7 @@
     'use strict';
     
     angular
-        .module('petStore.controllers')
+        .module('petStore.productList.controllers', [])
         .controller('ProductListController', ProductListController);
     
     ProductListController.$inject = ['ProductService', '$stateParams', '$filter', '$anchorScroll', 'constants'];
@@ -19,13 +19,11 @@
         vm.loadMoreProducts = loadMoreProducts;
         vm.allProductsClick = allProductsClick;
         
+        activate();
         $anchorScroll();
-        getAllProducts();
-         
-        /*
-         * Load and filter produts depending on the searching criteria
-         */
-        function getAllProducts() {
+                 
+        function activate() {
+            // Load and filter produts depending on the searching criteria
             ProductService.getAll().$loaded().then(function (products) {
                 if ($stateParams.filterLbl === "cat") {
                     vm.products = $filter('filter')(products, { categoryId: $stateParams.filterVal });

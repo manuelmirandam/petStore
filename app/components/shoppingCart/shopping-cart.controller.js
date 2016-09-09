@@ -2,7 +2,7 @@
     'use strict';
     
     angular
-        .module('petStore.controllers')
+        .module('petStore.shoppingCart.controllers', [])
         .controller('ShoppingCartController', ShoppingCartController);
     
     ShoppingCartController.$inject = ['ShoppingCartService', 'ProductService', '$state', '$anchorScroll', '$cacheFactory'];
@@ -22,13 +22,10 @@
         vm.quantityChange = quantityChange;
         vm.checkout = checkout;
         
-        $anchorScroll();
-        getShoppingCartItems();
-        
-        /*
-         * Get all shopping cart items and loop the array to pull the product data
-         */
-        function getShoppingCartItems() {
+        activate();
+        $anchorScroll();        
+                
+        function activate() {            
             var dataCache = $cacheFactory.get('shoppingCartCache');
             // Let's validate if the cache object exists, if not, we create the cache object.
             if (!dataCache) {
@@ -40,6 +37,8 @@
                 vm.shoppingCartList = shoppingCartItemsFromCache;
             } else {
                 var shoppingCartList = [];
+                
+                // Get all shopping cart items and loop the array to pull the product data
                 ShoppingCartService.getAll().$loaded()
                     .then(function (shopingCartItems) {
                         angular.forEach(shopingCartItems, function (item) {

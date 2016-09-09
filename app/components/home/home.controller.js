@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('petStore.controllers', [])
+        .module('petStore.home.controllers', [])
         .controller('HomeController', HomeController);
     
     HomeController.$inject = ['CategoryService', 'AnimalService', '$state'];

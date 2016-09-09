@@ -2,7 +2,7 @@
     'use strict';
     
     angular
-        .module('petStore.controllers')
+        .module('petStore.admin.controllers', [])
         .controller('AdminProductController', AdminProductController);
     
     AdminProductController.$inject = ['ProductService', 'ShoppingCartService', '$anchorScroll', '$state'];
@@ -12,12 +12,9 @@
         vm.deleteProduct = deleteProduct;
         
         $anchorScroll();
-        getAllProducts();
-        
-        /*
-         * Method to get all products from db
-         */
-        function getAllProducts() {
+        activate();
+              
+        function activate() {
             ProductService.getAll().$loaded()
                 .then(function (products) {
                     vm.products = products;

@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     
-    angular.module('petStore.filters', [])
+    angular.module('petStore.productDetail.filters', [])
         .filter('stock', stock);
     
     stock.$inject = ['constants'];

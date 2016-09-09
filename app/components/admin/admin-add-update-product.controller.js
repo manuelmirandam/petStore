@@ -2,7 +2,7 @@
     'use strict';
     
     angular
-        .module('petStore.controllers')
+        .module('petStore.admin.controllers')
         .controller('AdminAddUpdateProductController', AdminAddUpdateProductController);
     
     AdminAddUpdateProductController.$inject = ['$scope', '$state', 'ProductService', 'Product', '$anchorScroll'];

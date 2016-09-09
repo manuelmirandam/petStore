@@ -2,7 +2,7 @@
     'use strict';
         
     angular
-        .module('petStore.services', [])
+        .module('petStore.home.services', [])
         .factory('CategoryService', CategoryService);
          
     CategoryService.$inject = ['constants', '$firebaseArray'];

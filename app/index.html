@@ -145,21 +145,46 @@
         <script src="../assets/lib/angularfire.min.js"></script>
         
         <!-- Ecommerce App files -->
-        <script src="app.js"></script>
-        <script src="../assets/js/custom-on-change.directive.js"></script>
-        <script src="components/productDetail/stock-filter.js"></script>
+        <script src="app.module.js"></script>
+        
+        <!-- Modules -->
+        <script src="components/admin/admin.module.js"></script>
+        <script src="components/home/home.module.js"></script>
+        <script src="components/productDetail/product-detail.module.js"></script>
+        <script src="components/productList/product-list.module.js"></script>
+        <script src="components/shoppingCart/shopping-cart.module.js"></script>
+        <script src="shared/errors/error.module.js"></script>
+        
+        <!-- Config -->
+        <script src="components/admin/admin.config.js"></script>
+        <script src="components/home/home.config.js"></script>
+        <script src="components/productDetail/product-detail.config.js"></script>
+        <script src="components/productList/product-list.config.js"></script>
+        <script src="components/shoppingCart/shopping-cart.config.js"></script>
+        <script src="shared/errors/error.config.js"></script>
+        
+        <!-- Shared -->                        
         <script src="shared/constants.js"></script>
+        
+        <!-- Services -->
         <script src="components/home/categories/category.service.js"></script>
         <script src="components/home/animals/animal.service.js"></script>
         <script src="components/admin/product.service.js"></script>
         <script src="components/shoppingCart/shopping-cart.service.js"></script>        
+        
+        <!-- Filters -->
+        <script src="components/productDetail/stock-filter.js"></script>
+        
+        <!-- Directives -->
+        <script src="../assets/js/custom-on-change.directive.js"></script>
+        
+        <!-- Controllers -->
         <script src="components/home/home.controller.js"></script>
         <script src="components/productList/product-list.controller.js"></script>
         <script src="components/productDetail/product-detail.controller.js"></script>        
-        <script src="components/admin/admin-add-update-product.controller.js"></script>
         <script src="components/shoppingCart/shopping-cart.controller.js"></script>
         <script src="components/admin/admin-product.controller.js"></script>
         <script src="components/admin/admin-add-update-product.controller.js"></script>      
-        <script src="shared/errors/error-controller.js"></script>
+        <script src="shared/errors/error-controller.js"></script>                                
     </body>
 </html>
