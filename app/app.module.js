@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    
+
     angular
         .module('petStore', [
             'firebase',
@@ -14,9 +14,9 @@
             'petStore.error'
         ])
         .config(Config);
-    
+
     Config.$inject = ['$urlRouterProvider'];
-    
+
     function Config($urlRouterProvider) {
         $urlRouterProvider.otherwise('/error/404');
     }

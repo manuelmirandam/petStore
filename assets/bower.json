@@ -1,0 +1,24 @@
+{
+  "name": "petstore",
+  "homepage": "https://github.com/manuelmirandam/petStore",
+  "authors": [
+    "Manuel Miranda <mmirandasoftware@gmail.com>"
+  ],
+  "description": "PetStore application. Examples and best practices.",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-mocks": "^1.5.8",
+    "angular-block-ui": "^0.2.2",
+    "angularfire": "^1.2.0",
+    "firebase": "^2.2.4"
+  }
+}
