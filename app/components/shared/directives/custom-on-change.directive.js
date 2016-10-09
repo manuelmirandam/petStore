@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     
-    angular.module('petStore.directives', [])
+    angular.module('petStore')
         .directive('customOnChange', function () {
             return {
                 restrict: 'A',

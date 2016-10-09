@@ -1,7 +1,8 @@
 (function () {
     'use strict';
 
-    angular.module('petStore')
+    angular
+        .module('petStore')
         .run(Run);
 
     Run.$inject = ['$rootScope', 'blockUI', '$state'];
