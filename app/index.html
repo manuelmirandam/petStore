@@ -59,7 +59,7 @@
                                 <div class="panel-body">                             
                                     <ul class="category-body">
                                         <li ng-repeat="category in vm.categories">
-                                            <a ui-sref="productList({ filterLbl: 'cat', filterVal: category.categoryId })">{{ category.name }}</a>
+                                            <a ui-sref="productList({ filterLbl: 'cat', filterVal: category._id })">{{ category.name }}</a>
                                         </li>                                        
                                     </ul>
                                 </div>
@@ -71,7 +71,7 @@
                                 <div class="panel-body">                             
                                     <ul class="category-body">
                                         <li ng-repeat="animal in vm.animals">
-                                            <a ui-sref="productList({ filterLbl: 'animal', filterVal: animal.animalId })">{{ animal.name }}</a>
+                                            <a ui-sref="productList({ filterLbl: 'animal', filterVal: animal._id })">{{ animal.name }}</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -93,13 +93,13 @@
                     <dl class="footer-nav">
                         <dt class="nav-title">CATERORIES</dt>
                         <dd class="nav-item" ng-repeat="category in vm.categories">
-                            <a ui-sref="productList({ filterLbl: 'cat', filterVal: category.categoryId })">{{ category.name }}</a>
+                            <a ui-sref="productList({ filterLbl: 'cat', filterVal: category._id })">{{ category.name }}</a>
                         </dd>                       
                     </dl>
                     <dl class="footer-nav">                        
                         <dt class="nav-title">ANIMALS</dt>
                         <dd class="nav-item" ng-repeat="animal in vm.animals">
-                            <a ui-sref="productList({ filterLbl: 'animal', filterVal: animal.animalId })">{{ animal.name }}</a>
+                            <a ui-sref="productList({ filterLbl: 'animal', filterVal: animal._id })">{{ animal.name }}</a>
                         </dd>
                     </dl>
                     <dl class="footer-nav">
@@ -131,7 +131,8 @@
         
         <!-- Angular files -->
         <script src="../assets/bower_components/angular/angular.min.js"></script>
-                
+        <script src="../assets/bower_components/angular-resource/angular-resource.min.js"></script>
+                        
         <!-- Angular blockUI -->
         <script src="../assets/bower_components/angular-block-ui/dist/angular-block-ui.min.js"></script>
         
@@ -164,13 +165,14 @@
         <script src="components/shared/errors/error.config.js"></script>
         
         <!-- Shared -->                        
-        <script src="components/shared/constants.js"></script>
+        <script src="components/shared/constants.js"></script>                
         
         <!-- Services -->        
         <script src="components/home/animals/animal.service.js"></script>
         <script src="components/home/categories/category.service.js"></script>
         <script src="components/admin/product.service.js"></script>
         <script src="components/shoppingCart/shopping-cart.service.js"></script>        
+        <script src="components/shoppingCart/shopping-cart-helper.js"></script>        
         
         <!-- Filters -->
         <script src="components/productDetail/stock-filter.js"></script>

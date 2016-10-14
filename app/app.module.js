@@ -5,6 +5,7 @@
         .module('petStore', [
             'firebase',
             'blockUI',
+            'ngResource',
             'ui.router',
             'petStore.admin',
             'petStore.home',

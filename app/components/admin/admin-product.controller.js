@@ -15,22 +15,23 @@
         activate();
 
         function activate() {
-            ProductService.getAll().$loaded()
-                .then(function (products) {
-                    vm.products = products;
-                });
+            ProductService.query().$promise.then(function (products) {
+                vm.products = products;
+            });
         }
 
         /*
          * Method to delete a product from db
          */
         function deleteProduct(product, index) {
-            ProductService.deleteProduct(product);
-            ShoppingCartService.deleteById(product)
-                .then(function () {
-                    ShoppingCartService.deleteItemsFromCache();
-                });
-            $state.reload();
+            ProductService.delete({ productId: product._id })
+                .$promise.then(function () {
+                /*ShoppingCartService.deleteById(product)
+                    .then(function () {
+                        ShoppingCartService.deleteItemsFromCache();
+                });*/
+                $state.reload();
+            });
         }
     }
 }());

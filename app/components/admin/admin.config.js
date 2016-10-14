@@ -38,6 +38,6 @@
     Product.$inject = ['ProductService', '$stateParams'];
         
     function Product(ProductService, $stateParams) {
-        return ProductService.getById($stateParams.productId);
+        return ProductService.get({ productId: $stateParams.productId });
     }
 }());

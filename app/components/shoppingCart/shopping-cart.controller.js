@@ -1,102 +1,113 @@
 (function () {
     'use strict';
-    
+
     angular
         .module('petStore.shoppingCart.controllers', [])
         .controller('ShoppingCartController', ShoppingCartController);
-    
-    ShoppingCartController.$inject = ['ShoppingCartService', 'ProductService', '$state', '$anchorScroll', '$cacheFactory'];
-    
-    function ShoppingCartController(ShoppingCartService, ProductService, $state, $anchorScroll, $cacheFactory) {
+
+    ShoppingCartController.$inject = ['ShoppingCartService', 'ProductService', 'ShoppingCartHelper', '$state', '$anchorScroll', '$cacheFactory'];
+
+    function ShoppingCartController(ShoppingCartService, ProductService, ShoppingCartHelper, $state, $anchorScroll, $cacheFactory) {
         var vm = this;
-        
-        vm.shoppingCartList = [];
+
+        vm.shoppingCartItems = [];
         vm.summary = {
             subtotal: 0,
             shipping: 0,
             tax: 0,
             total: 0
         };
-        
+
         vm.deleteProductFromCart = deleteProductFromCart;
         vm.quantityChange = quantityChange;
         vm.checkout = checkout;
-        
+
         activate();
-        $anchorScroll();        
-                
-        function activate() {            
+        $anchorScroll();
+
+        function activate() {
             var dataCache = $cacheFactory.get('shoppingCartCache');
             // Let's validate if the cache object exists, if not, we create the cache object.
             if (!dataCache) {
                 dataCache = $cacheFactory('shoppingCartCache');
             }
-            
+
             var shoppingCartItemsFromCache = dataCache.get('shoppingCartItems');
             if (shoppingCartItemsFromCache) {
-                vm.shoppingCartList = shoppingCartItemsFromCache;
+                vm.shoppingCartItems = shoppingCartItemsFromCache;
             } else {
-                var shoppingCartList = [];
-                
+                var shoppingCartItems = [];
+
                 // Get all shopping cart items and loop the array to pull the product data
-                ShoppingCartService.getAll().$loaded()
+                ShoppingCartService.query({ userId: 1 }).$promise
                     .then(function (shopingCartItems) {
                         angular.forEach(shopingCartItems, function (item) {
-                            ProductService.getById(item.$id).$loaded()
-                                .then(function (x) {
-                                    x.quantity = item.quantity;
-                                    x.subtotal = item.quantity * x.unitPrice;
-                                    shoppingCartList.push(x);
+                            ProductService.get({ productId: item.productId }).$promise
+                                .then(function (x) {                                    
+                                    item.subtotal = item.quantity * x.unitPrice;
+                                    item.imgPath = x.imgPath;
+                                    item.name = x.name;
+                                    item.shortDescription = x.shortDescription;
+                                    item.stock = x.stock;
+                                    item.unitPrice = x.unitPrice;
+                                    shoppingCartItems.push(item);
                                     updateShoppingCartSummary();
                                 });
                         });
-                        
-                        dataCache.put('shoppingCartItems', shoppingCartList);
-                        vm.shoppingCartList = shoppingCartList;
+
+                        dataCache.put('shoppingCartItems', shoppingCartItems);
+                        vm.shoppingCartItems = shoppingCartItems;
                     });
             }
         }
-          
+
         /*
          * Method to delete a product from cart/cache
          */
-        function deleteProductFromCart(product, index) {
-            ShoppingCartService.deleteById(product)
+        function deleteProductFromCart(cartItem, index) {
+            ShoppingCartService.delete({ cartItemId: cartItem._id }).$promise
                 .then(function () {
-                    ShoppingCartService.deleteItemsFromCache();
+                    ShoppingCartHelper.deleteItemsFromCache();
                     $state.reload();
                 });
         }
-                
+
         /*
          * Method to update the shopping cart summary when a product qty change
          */
-        function quantityChange(product) {
-            product.quantity = product.quantity !== undefined ? product.quantity : product.stock;
-            product.subtotal = product.quantity * product.unitPrice;
-            ShoppingCartService.addToCart(product);
-            updateShoppingCartSummary();
+        function quantityChange(cartItem) {
+            cartItem.quantity = cartItem.quantity !== undefined ? cartItem.quantity : cartItem.stock;
+            cartItem.subtotal = cartItem.quantity * cartItem.unitPrice;
+            ShoppingCartService.update(cartItem._id, cartItem).$promise.then(function () {
+                updateShoppingCartSummary();
+            });
         }
-                            
+
         /*
          * Simulates a checkout and place order process, it subastracts the product quantity from the product stock
          */
         function checkout() {
-            angular.forEach(vm.shoppingCartList, function (product) {
-                product.stock -= product.quantity;
-                ProductService.update(product);
-                ShoppingCartService.deleteById(product);
+            angular.forEach(vm.shoppingCartItems, function (cartItem) {                                                                                 
+                ProductService.get({ productId: cartItem.productId}).$promise
+                    .then(function (product) {
+                        product.stock = product.stock - cartItem.quantity;
+                        ProductService.update({ productId: product._id }, product).$promise
+                            .then(function () {
+                                ShoppingCartService.delete({ cartItemId: cartItem._id });
+                            });                        
+                    });
             });
             
-            $state.go('productList');
+            ShoppingCartHelper.deleteItemsFromCache();
+            $state.go('productList');                                    
         }
-        
+
         /*
          * Method to update the shopping cart summary when occurs a delete or update in the cart
          */
         function updateShoppingCartSummary() {
             vm.summary.subtotal = 0;
-            angular.forEach(vm.shoppingCartList, function (value) {
+            angular.forEach(vm.shoppingCartItems, function (value) {
                 vm.summary.subtotal += value.subtotal;
             });
 

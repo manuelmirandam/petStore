@@ -24,7 +24,7 @@
                  
         function activate() {
             // Load and filter produts depending on the searching criteria
-            ProductService.getAll().$loaded().then(function (products) {
+            ProductService.query().$promise.then(function (products) {
                 if ($stateParams.filterLbl === "cat") {
                     vm.products = $filter('filter')(products, { categoryId: $stateParams.filterVal });
                 } else if ($stateParams.filterLbl === "animal") {
@@ -53,7 +53,7 @@
          * Display all products on the screen
          */
         function allProductsClick() {
-            ProductService.getAll().$loaded()
+            ProductService.query().$promise
                 .then(function (products) {
                     vm.products = products;
                     vm.staticContent.limit = vm.products.length;

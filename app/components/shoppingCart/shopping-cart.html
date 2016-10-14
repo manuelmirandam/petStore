@@ -17,34 +17,34 @@
                             <th class="col-md-2">Subtotal</th>
                             <th></th>
                         </tr>
-                        <tr ng-repeat="shoppingCartElement in vm.shoppingCartList">
+                        <tr ng-repeat="cartItem in vm.shoppingCartItems">
                             <td>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <a href="#/productDetail/{{ shoppingCartElement.$id }}">
-                                            <img class="img-rounded" ng-src="/assets/img/products/{{ shoppingCartElement.imgPath }}" width="180px" height="180px">
+                                        <a href="#/productDetail/{{ cartItem.productId }}">
+                                            <img class="img-rounded" ng-src="/assets/img/products/{{ cartItem.imgPath }}" width="180px" height="180px">
                                         </a>              
                                     </div>
                                     <div class="col-sm-6">
                                         <div id="shopping-cart-product-description-container">
                                             <div id="shopping-cart-product-name">
-                                                <a href="#/productDetail/{{ shoppingCartElement.$id }}">{{ shoppingCartElement.name }}</a>
+                                                <a href="#/productDetail/{{ cartItem.productId }}">{{ cartItem.name }}</a>
                                             </div>
                                             <div id="shopping-cart-product-short-description">
-                                                {{ shoppingCartElement.shortDescription }}
+                                                {{ cartItem.shortDescription }}
                                             </div>
                                         </div>                                                            
                                     </div>
                                 </div>                                                                                                                             
                             </td>                            
-                            <td class="shopping-cart-table-price">{{ shoppingCartElement.unitPrice | currency }}</td>
+                            <td class="shopping-cart-table-price">{{ cartItem.unitPrice | currency }}</td>
                             <td>
                                 <span class="custom-qty-input">
-                                    <input type="number" name="quantity"  min="1" max="{{ shoppingCartElement.stock }}" ng-model="shoppingCartElement.quantity" ng-change="vm.quantityChange(shoppingCartElement)">
+                                    <input type="number" name="quantity"  min="1" max="{{ cartItem.stock }}" ng-model="cartItem.quantity" ng-change="vm.quantityChange(cartItem)">
                                 </span>
                             </td>
-                            <td class="shopping-cart-table-subtotal">{{ shoppingCartElement.subtotal | currency }}</td>
-                            <td><button class="btn btn-warning" ng-click="vm.deleteProductFromCart(shoppingCartElement, $index)"><i class="fa fa-times"></i></button></td>
+                            <td class="shopping-cart-table-subtotal">{{ cartItem.subtotal | currency }}</td>
+                            <td><button class="btn btn-warning" ng-click="vm.deleteProductFromCart(cartItem, $index)"><i class="fa fa-times"></i></button></td>
                         </tr>
                     </table>     
                 </div>                                                                           

@@ -1,22 +1,17 @@
 (function () {
     'use strict';
-        
+
     angular
         .module('petStore.home.services')
         .factory('CategoryService', CategoryService);
-         
-    CategoryService.$inject = ['constants', '$firebaseArray'];
-                                     
-    function CategoryService(constants, $firebaseArray) {
-        var categoryRef = new Firebase(constants.FIREBASE_URL + 'categories');
-        var categoryService = {
-            getAll: getAll
-        };
-         
-        return categoryService;
-        
-        function getAll() {
-            return $firebaseArray(categoryRef);
-        }
+
+    CategoryService.$inject = ['constants', '$resource'];
+
+    function CategoryService(constants, $resource) {
+        return $resource(constants.API_URL + 'categories', null, {
+            'update': {
+                method: 'PUT'
+            }
+        });
     }
 }());

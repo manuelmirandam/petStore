@@ -1,68 +1,22 @@
 (function () {
     'use strict';
-    
+
     angular
         .module('petStore.admin.services', [])
         .factory('ProductService', ProductService);
-    
-    ProductService.$inject = ['$firebaseObject', '$firebaseArray', 'constants', '$timeout'];
-    
-    function ProductService($firebaseObject, $firebaseArray, constants, $timeout) {
-        var productRef = new Firebase(constants.FIREBASE_URL + 'products');
-        
-        var productService = {
-            getAll: getAll,
-            getById: getById,
-            save: save,
-            update: update,
-            deleteProduct: deleteProduct
-        };
-        
-        return productService;
 
-        /*
-         * Method to get all products from db
-         */
-        function getAll() {
-            return $firebaseArray(productRef);
-        }
+    ProductService.$inject = ['constants', '$resource'];
 
-        /*
-         * Method to get a product by id
-         */
-        function getById(productId) {
-            return $firebaseObject(productRef.child(productId));
-        }
-
-        /*
-         * Method to save a product
-         */
-        function save(product) {
-            productRef.push(product);
-        }
-
-        /*
-         * Method to update a product
-         */
-        function update(product) {
-            productRef.child(product.$id)
-                .update({
-                    name: product.name,
-                    shortDescription: product.shortDescription,
-                    largeDescription: product.largeDescription,
-                    imgPath: product.imgPath,
-                    stock: product.stock,
-                    unitPrice: product.unitPrice,
-                    animalId: product.animalId,
-                    categoryId: product.categoryId
-                });
-        }
-
-        /*
-         * Method to delete a product
-         */
-        function deleteProduct(product) {
-            return $firebaseObject(productRef.child(product.$id)).$remove();
-        }
+    function ProductService(constants, $resource) {
+        return $resource(constants.API_URL + 'products/:productId', {
+            productId: '@_id'
+        }, {
+            'update': {
+                method: 'PUT'
+            },
+            'patch': {
+                method: 'PATCH'
+            }
+        });      
     }
 }());

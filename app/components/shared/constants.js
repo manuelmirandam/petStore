@@ -4,6 +4,7 @@
     angular.module('petStore')
         .constant('constants', {
             FIREBASE_URL: 'https://petstore-f6220.firebaseio.com/',
+            API_URL: 'http://localhost:3000/api/',
             IN_STOCK: 'In stock',
             SOLD_OUT: 'Sold out',
             LOAD_MORE: 'Load more',

@@ -13,7 +13,7 @@
                 url: '/error/:status',
                 controller: 'ErrorController',
                 controllerAs: 'vm',
-                templateUrl: 'shared/errors/error.html'
+                templateUrl: 'components/shared/errors/error.html'
             });
     }
 }());

@@ -25,14 +25,14 @@
                             <td>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <a href="#/productDetail/{{ product.$id }}">
+                                        <a href="#/productDetail/{{ product._id }}">
                                             <img class="img-rounded" ng-src="/assets/img/products/{{ product.imgPath }}" width="180px" height="180px">
                                         </a>              
                                     </div>
                                     <div class="col-sm-6">
                                         <div id="shopping-cart-product-description-container">
                                             <div id="shopping-cart-product-name">
-                                                <a ui-sref="productDetail({ productId: product.$id })">{{ product.name }}</a>
+                                                <a ui-sref="productDetail({ productId: product._id })">{{ product.name }}</a>
                                             </div>
                                             <div id="shopping-cart-product-short-description">
                                                 {{ product.shortDescription }}
@@ -45,7 +45,7 @@
                             <td>{{ product.stock }}</td>
                             <td>
                                 <a class="btn btn-warning" ng-click="vm.deleteProduct(product, $index)"><i class="fa fa-times"></i></a>
-                                <a ui-sref="editProduct({ productId: product.$id })" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                                <a ui-sref="editProduct({ productId: product._id })" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
                             </td>
                         </tr>
                     </table>     

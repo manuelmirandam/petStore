@@ -30,14 +30,18 @@
          * Method to save or update a product
          */
         function saveProduct(product) {
-            if (vm.productForm.$valid) {
-                if (product.$id !== undefined && product.$id !== "") {
-                    ProductService.update(product);
-                } else {
-                    ProductService.save(product);
-                }
-
-                $state.go('adminProduct');
+            if (vm.productForm.$valid) {                
+                if (product._id !== undefined && product._id !== "") {
+                    ProductService.update({ productId: product._id }, product).$promise.then(function () {
+                        $state.go('adminProduct');
+                    }, function (err) {
+                        // Error handling
+                    });
+                } else {                    
+                    ProductService.save(product).$promise.then(function () {
+                        $state.go('adminProduct');
+                    });
+                }                
             }
         }
               
